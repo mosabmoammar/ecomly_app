@@ -1,16 +1,41 @@
-# ecomly_app
+# Ecomly (Flutter client)
 
-A new Flutter project.
+The Flutter client for Ecomly, an e-commerce app whose REST API lives in [ecomly_server](https://github.com/mosabmoammar/ecomly_server).
 
-## Getting Started
+> **Status:** early stage. The app foundation is in place; the store screens are being built next.
 
-This project is a starting point for a Flutter application.
+## What is in place
 
-A few resources to get you started if this is your first Flutter project:
+- Material 3 theme with light and dark variants that follow the system setting, using the Switzer font family
+- Color palette and text styles kept in `core/res`
+- An app-wide cache singleton that holds the session token, user ID and theme mode
+- A cache helper built on shared_preferences for persisting the session between launches
+- Context, string and theme-mode extensions, plus shared UI utilities
+- Lottie animations and image assets ready for onboarding and empty states
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Planned screens
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Onboarding, authentication (connected to the server's JWT and OTP password-reset endpoints), product catalog and search, product details with reviews, cart, wishlist, Stripe checkout and order history.
+
+## Project structure
+
+```
+lib/
+├── main.dart
+└── core/
+    ├── common/
+    │   ├── app/          # cache helper (shared_preferences)
+    │   └── singletons/   # session and theme cache
+    ├── extensions/       # BuildContext, String, ThemeMode
+    ├── res/              # media paths, colors, text styles
+    └── utils/            # shared UI helpers
+```
+
+## Getting started
+
+```sh
+git clone https://github.com/mosabmoammar/ecomly_app.git
+cd ecomly_app
+flutter pub get
+flutter run
+```
